@@ -1,4 +1,6 @@
 import './App.scss';
+import { HashRouter, Link, Route, Routes, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
 import profilePhoto from './assets/thumbnail_Headshot Linh Nguyen6.jpg';
 import resumeFile from './assets/LinhNguyen_resume.pdf';
 import Header from './components/Header';
@@ -78,13 +80,22 @@ const interests = [
 
 const tags = ['Senior CS student', 'Research-driven', 'Adaptable', 'Collaborative'];
 
-function App() {
-  return (
-    <div className="page-shell">
-      <Header />
+interface PortfolioPageProps {
+  focusId?: string;
+}
 
-      <main className="portfolio">
-        <section className="hero card">
+function PortfolioPage({ focusId }: PortfolioPageProps) {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (focusId) {
+      document.getElementById(focusId)?.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [focusId, location.pathname]);
+
+  return (
+    <>
+      <section className="hero card">
           <div className="hero-copy">
             <p className="eyebrow">Computer Science student • Senior year</p>
             <h1>
@@ -100,9 +111,7 @@ function App() {
             </p>
 
             <div className="cta-row">
-              <a className="primary-btn" href="#experience">
-                My experience
-              </a>
+              <Link className="primary-btn" to="/experience">My experience</Link>
               <a className="secondary-btn" href={resumeFile} target="_blank" rel="noreferrer">
                 Resume
               </a>
@@ -132,9 +141,9 @@ function App() {
               <img src={profilePhoto} alt="Linh Nguyen portrait" className="profile-photo" />
             </div>
           </div>
-        </section>
+      </section>
 
-        <section id="about" className="story-grid">
+      <section className="story-grid">
           <article className="card story-box">
             <p className="section-tag">About me</p>
             <h3>I’m someone who enjoys learning, creating, and figuring things out.</h3>
@@ -158,11 +167,11 @@ function App() {
               ))}
             </ul>
           </aside>
-        </section>
+      </section>
 
-        <ProjectList projects={projects} />
+      <ProjectList projects={projects} />
 
-        <section id="interests" className="showcase">
+      <section id="interests" className="showcase">
           <div className="section-heading">
             <p className="section-tag">Interests</p>
           </div>
@@ -178,7 +187,7 @@ function App() {
               </article>
             ))}
           </div>
-        </section>
+      </section>
 
         <section id="connect" className="card contact-box">
           <p className="section-tag">Let’s connect</p>
@@ -195,10 +204,32 @@ function App() {
             <a className="secondary-btn" href={resumeFile} target="_blank" rel="noreferrer">
               View resume
             </a>
+            <a className="secondary-btn" href="mailto:nguyenthuylinh.working@gmail.com">
+              nguyenthuylinh.working@gmail.com
+            </a>
           </div>
         </section>
-      </main>
-    </div>
+    </>
+  );
+}
+
+function App() {
+  return (
+    <HashRouter>
+      <div className="page-shell">
+        <Header />
+        <main className="portfolio">
+          <Routes>
+            <Route path="/" element={<PortfolioPage />} />
+            <Route path="/projects" element={<PortfolioPage focusId="experience" />} />
+            <Route path="/experience" element={<PortfolioPage focusId="experience" />} />
+            <Route path="/about" element={<PortfolioPage focusId="about" />} />
+            <Route path="/interests" element={<PortfolioPage focusId="interests" />} />
+            <Route path="/connect" element={<PortfolioPage focusId="connect" />} />
+          </Routes>
+        </main>
+      </div>
+    </HashRouter>
   );
 }
 
