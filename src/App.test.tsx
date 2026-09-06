@@ -2,8 +2,9 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
+test('renders personal portfolio content', () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+  expect(screen.getByRole('heading', { name: /hello, i’m linh nguyen/i })).toBeInTheDocument();
+  expect(screen.getByText(/computer science student • senior year/i)).toBeInTheDocument();
+  expect(screen.getByRole('link', { name: /^linkedin$/i })).toBeInTheDocument();
 });
