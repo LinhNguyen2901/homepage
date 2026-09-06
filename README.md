@@ -1,46 +1,43 @@
-# Getting Started with Create React App
+# Linh Nguyen Portfolio
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Personal portfolio website built with React and TypeScript. It includes responsive Sass styling, routed sections, and a D3 revenue bar chart with hover tooltips.
 
-## Available Scripts
+## Links
 
-In the project directory, you can run:
+- Live website: https://LinhNguyen2901.github.io/homepage/
+- GitHub repository: https://github.com/LinhNguyen2901/homepage
 
-### `npm start`
+## Requirements
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Node.js 20 or newer
+- npm
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Run Locally
 
-### `npm test`
+From the project folder, install dependencies:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+npm install
+```
 
-### `npm run build`
+Start the development server:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+npm start
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Open http://localhost:3000 in a browser. Because the site uses `HashRouter` for GitHub Pages, routed sections use URLs such as `/#/experience`, `/#/about`, `/#/chart`, and `/#/connect`.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Deployment
 
-### `npm run eject`
+Deployment is automated with GitHub Actions. Push to the `main` branch to run the workflow in `.github/workflows/deploy.yml`. The workflow installs dependencies, builds the app, and deploys the `build` folder to GitHub Pages.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+For the workflow to deploy, set the repository's GitHub Pages source to **GitHub Actions** under **Settings -> Pages**.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Main Technologies
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- React and TypeScript
+- Sass (`.scss`)
+- React Router with `HashRouter`
+- D3 for the interactive bar chart
+- GitHub Actions and GitHub Pages
