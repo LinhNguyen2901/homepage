@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 import profilePhoto from './assets/thumbnail_Headshot Linh Nguyen6.jpg';
 import resumeFile from './assets/LinhNguyen_resume.pdf';
 import Header from './components/Header';
