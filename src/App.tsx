@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import profilePhoto from './assets/thumbnail_Headshot Linh Nguyen6.jpg';
 import resumeFile from './assets/LinhNguyen_resume.pdf';
 import Header from './components/Header';
+import BarChart from './components/BarChart';
 import ProjectList, { Project } from './components/ProjectList';
 
 const strengths = [
@@ -189,6 +190,14 @@ function PortfolioPage({ focusId }: PortfolioPageProps) {
           </div>
       </section>
 
+        <section id="chart" className="card chart-box">
+          <div className="section-heading">
+            <p className="section-tag">Lab 1 D3 visualization</p>
+            <h3>Lab 1 bar chart</h3>
+          </div>
+          <BarChart />
+        </section>
+
         <section id="connect" className="card contact-box">
           <p className="section-tag">Let’s connect</p>
           <h3>I’m always happy to meet people, learn more, and talk about opportunities.</h3>
@@ -225,6 +234,7 @@ function App() {
             <Route path="/experience" element={<PortfolioPage focusId="experience" />} />
             <Route path="/about" element={<PortfolioPage focusId="about" />} />
             <Route path="/interests" element={<PortfolioPage focusId="interests" />} />
+            <Route path="/chart" element={<PortfolioPage focusId="chart" />} />
             <Route path="/connect" element={<PortfolioPage focusId="connect" />} />
           </Routes>
         </main>
