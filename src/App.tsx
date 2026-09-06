@@ -1,6 +1,8 @@
 import './App.css';
 import profilePhoto from './assets/thumbnail_Headshot Linh Nguyen6.jpg';
 import resumeFile from './assets/LinhNguyen_resume.pdf';
+import Header from './components/Header';
+import ProjectList, { Project } from './components/ProjectList';
 
 const strengths = [
   'Quick learner who adapts fast and picks up new tools quickly',
@@ -9,7 +11,7 @@ const strengths = [
   'Built for fast-moving environments where momentum and creativity matter',
 ];
 
-const experience = [
+const projects: Project[] = [
   {
     title: 'Software Engineer Intern',
     time: 'May 2026 - Aug 2026',
@@ -79,15 +81,7 @@ const tags = ['Senior CS student', 'Research-driven', 'Adaptable', 'Collaborativ
 function App() {
   return (
     <div className="page-shell">
-      <header className="topbar">
-        <div className="brand">Linh Nguyen</div>
-        <nav className="nav">
-          <a href="#about">About</a>
-          <a href="#experience">Experience</a>
-          <a href="#interests">Interests</a>
-          <a href="#connect">Connect</a>
-        </nav>
-      </header>
+      <Header />
 
       <main className="portfolio">
         <section className="hero card">
@@ -166,34 +160,7 @@ function App() {
           </aside>
         </section>
 
-        <section id="experience" className="experience-section">
-          <div className="section-heading">
-            <p className="section-tag">Experience</p>
-          </div>
-
-          <div className="experience-timeline">
-            {experience.map(({ title, time, organization, logo, logoAlt, tag, bullets }) => (
-              <article className="experience-item" key={`${organization}-${title}`}>
-                <div className="timeline-marker" aria-hidden="true" />
-                <div className="card experience-card">
-                  <time className="experience-time">{time}</time>
-                  <span className="exp-tag">{tag}</span>
-                  <div className="experience-heading">
-                    <div className="organization-logo" aria-hidden="true">
-                      {logo.startsWith('http') ? <img src={logo} alt={logoAlt} /> : logo}
-                    </div>
-                    <h4>{title}</h4>
-                  </div>
-                  <ul className="experience-bullets">
-                    {bullets.map((bullet) => (
-                      <li key={bullet}>{bullet}</li>
-                    ))}
-                  </ul>
-                </div>
-              </article>
-            ))}
-          </div>
-        </section>
+        <ProjectList projects={projects} />
 
         <section id="interests" className="showcase">
           <div className="section-heading">
