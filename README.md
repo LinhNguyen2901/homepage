@@ -39,5 +39,4 @@ For the workflow to deploy, set the repository's GitHub Pages source to **GitHub
 - React and TypeScript
 - Sass (`.scss`)
 - React Router with `HashRouter`
-- D3 for the interactive bar chart
 - GitHub Actions and GitHub Pages

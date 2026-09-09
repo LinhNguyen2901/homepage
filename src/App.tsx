@@ -3,8 +3,12 @@ import { HashRouter, Link, Route, Routes, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import profilePhoto from './assets/thumbnail_Headshot Linh Nguyen6.jpg';
 import resumeFile from './assets/LinhNguyen_resume.pdf';
+import badmintonImage from './assets/badminton.jpg';
+import puzzlesImage from './assets/puzzles.jpg';
+import natureImage from './assets/nature.jpg';
+import perfumeImage from './assets/perfume.jpg';
 import Header from './components/Header';
-import BarChart from './components/BarChart';
+import InterestCardFlip from './components/InterestCardFlip';
 import ProjectList, { Project } from './components/ProjectList';
 
 const strengths = [
@@ -61,21 +65,25 @@ const interests = [
     icon: '🏸',
     title: 'Badminton',
     description: 'Fast, focused, and energetic. It keeps me active, resilient, and always learning how to adapt under pressure.',
+    backImage: badmintonImage,
   },
   {
     icon: '🧩',
     title: 'Puzzles',
     description: 'I enjoy solving layered problems and finding the satisfying pattern behind the chaos.',
+    backImage: puzzlesImage,
   },
   {
     icon: '🌿',
     title: 'Nature',
     description: 'A good walk outside helps me reset, reflect, and come back with clearer ideas and more balance.',
+    backImage: natureImage,
   },
   {
     icon: '🌸',
     title: 'Perfume',
     description: 'Perfume is a creative, personal expression of mood, identity, and memory, a little bit of art in everyday life.',
+    backImage: perfumeImage,
   },
 ];
 
@@ -178,25 +186,17 @@ function PortfolioPage({ focusId }: PortfolioPageProps) {
           </div>
 
           <div className="interest-grid">
-            {interests.map(({ icon, title, description }) => (
-              <article className="card interest-card" key={title}>
-                <div className="interest-icon" aria-hidden="true">
-                  {icon}
-                </div>
-                <h4>{title}</h4>
-                <p>{description}</p>
-              </article>
+            {interests.map(({ icon, title, description, backImage }) => (
+              <InterestCardFlip
+                key={title}
+                icon={icon}
+                title={title}
+                description={description}
+                backImage={backImage}
+              />
             ))}
           </div>
       </section>
-
-        <section id="chart" className="card chart-box">
-          <div className="section-heading">
-            <p className="section-tag">Lab 1 D3 visualization</p>
-            <h3>Lab 1 bar chart</h3>
-          </div>
-          <BarChart />
-        </section>
 
         <section id="connect" className="card contact-box">
           <p className="section-tag">Let’s connect</p>
@@ -234,7 +234,6 @@ function App() {
             <Route path="/experience" element={<PortfolioPage focusId="experience" />} />
             <Route path="/about" element={<PortfolioPage focusId="about" />} />
             <Route path="/interests" element={<PortfolioPage focusId="interests" />} />
-            <Route path="/chart" element={<PortfolioPage focusId="chart" />} />
             <Route path="/connect" element={<PortfolioPage focusId="connect" />} />
           </Routes>
         </main>
